@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.view.MotionEvent;
 import android.widget.AdapterView;
@@ -25,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner mySpinner1;
     private ArrayAdapter<String> adapter1;
     private int type;
-    private List<String> list2 = new ArrayList<String>();
-    private Spinner mySpinner2;
-    private ArrayAdapter<String> adapter2;
+
     private double money2;
     private List<String> list3 = new ArrayList<String>();
     private Spinner mySpinner3;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private double money3_coefficient;
     private double sum_money;
     private TextView myTextView;
+    private double discount;
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,35 +94,6 @@ public class MainActivity extends AppCompatActivity {
                 /* 将所选mySpinner 的值带入myTextView 中*/
                 type = Integer.parseInt(adapter1.getItem(arg2));
                 System.out.println(type);
-                /* 将mySpinner 显示*/
-                arg0.setVisibility(View.VISIBLE);
-            }
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-                arg0.setVisibility(View.VISIBLE);
-            }
-        });
-
-        //第一步：添加一个下拉列表项的list，这里添加的项就是下拉列表的菜单项
-        list2.add("50000");
-        list2.add("100000");
-        list2.add("150000");
-        list2.add("200000");
-        list2.add("300000");
-        mySpinner2 = (Spinner) findViewById(R.id.spinner2);
-        //第二步：为下拉列表定义一个适配器，这里就用到里前面定义的list。
-        adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list2);
-        //第三步：为适配器设置下拉列表下拉时的菜单样式。
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //第四步：将适配器添加到下拉列表上
-        mySpinner2.setAdapter(adapter2);
-        //第五步：为下拉列表设置各种事件的响应，这个事响应菜单被选中
-        mySpinner2.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                // TODO Auto-generated method stub
-                /* 将所选mySpinner 的值带入myTextView 中*/
-                money2 = Double.parseDouble(adapter2.getItem(arg2));
-                System.out.println(money2);
                 /* 将mySpinner 显示*/
                 arg0.setVisibility(View.VISIBLE);
             }
@@ -196,6 +169,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                // Toast.makeText(MainActivity.this, "1111", Toast.LENGTH_SHORT).show();
                 myTextView  = (TextView)findViewById(R.id.textView5);
+                EditText M2 = (EditText) findViewById(R.id.editText1);
+                EditText Discount = (EditText) findViewById(R.id.editText4);
+
+
+                money2 = Double.parseDouble(((!TextUtils.isEmpty(M2.getText()))?(M2.getText().toString()):"0"));
+
+                discount = Double.parseDouble(((!TextUtils.isEmpty(Discount.getText()))?(Discount.getText().toString()):"0"));
                 if(5000 == money3){
                     money3_coefficient = 1;
                 }else if(10000 == money3){
@@ -213,16 +193,18 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(1 == type) {
-                    sum_money = (money2 *2.5/1000 * 0.4) + (money3_coefficient * 32 * 1.3 + money4/10*8)*0.4;
+                    sum_money = (money2 *2.5/1000 ) + (money3_coefficient * 32 * 1.3 + money4/10*8);
                 }else if(2 == type) {
-                    sum_money = (money2 *3.5/1000 * 0.4) + (money3_coefficient * 36 * 1.3 + money4/10*10)*0.4;
+                    sum_money = (money2 *3.5/1000 ) + (money3_coefficient * 36 * 1.3 + money4/10*10);
                 }else if(3 == type) {
-                    sum_money = (money2 *4/1000 * 0.4) + (money3_coefficient * 40 * 1.3 + money4/10*12)*0.4;
+                    sum_money = (money2 *4/1000 ) + (money3_coefficient * 40 * 1.3 + money4/10*12);
                 }else if(4 == type) {
-                    sum_money = (money2 *6/1000 * 0.4) + (money3_coefficient * 44 * 1.3 + money4/10*18)*0.4;
+                    sum_money = (money2 *6/1000 ) + (money3_coefficient * 44 * 1.3 + money4/10*18);
                 }else if(5 == type) {
-                    sum_money = (money2 *9/1000 * 0.4) +(money3_coefficient * 48 * 1.3 + money4/10*26)*0.4;
+                    sum_money = (money2 *9/1000 ) +(money3_coefficient * 48 * 1.3 + money4/10*26);
                 }
+
+                sum_money = sum_money * discount /10;
                 DecimalFormat df = new DecimalFormat("0.00");
                 myTextView.setText("您选择的是：\n"+ "职业类别：" + type +"\n"+"意外身故、伤残、烧伤保障："+ df.format(money2) + "\n" +
                                 "意外医疗保障："+ df.format(money3) +"\n"+"意外住院津贴："+ df.format(money4) + "\n" + "合计：" +df.format(sum_money)+ "\n");

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.lifeinsurance.MainActivity">
-
+    tools:context="com.example.administrator.lifeinsurance.Jiangongxian">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -13,38 +12,40 @@
         android:gravity="center"
         >
         <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:text="职业类别：" />
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#FF0000"
-            android:layout_weight="1" />
-        <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_jiangong0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:text="意外身故、伤残、烧伤保障：" />
+            android:text="工程造价（单位：元）：" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/editText_jiangong0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="100000" />
+
+        <TextView
+            android:id="@+id/textView_jiangong1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:text="意外身故、伤残保障：" />
+
+        <EditText
+            android:id="@+id/editText_jiangong1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
             android:text="100000" />
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView_jiangong2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,29 +53,16 @@
             android:textColor="#000000"
             android:text="意外医疗保障：" />
 
-        <Spinner
-            android:id="@+id/spinner3"
+        <EditText
+            android:id="@+id/editText_jiangong2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FF0000"
-            android:layout_weight="1" />
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:text="意外住院津贴：" />
+            android:ems="10"
+            android:inputType="number"
+            android:text="10000" />
 
-        <Spinner
-            android:id="@+id/spinner4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#FF0000"
-            android:layout_weight="1" />
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/textView_jiangong3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -83,14 +71,14 @@
             android:text="折扣（单位：折）：" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editText_jiangong3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
             android:text="10" />
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_jiangong4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -99,7 +87,7 @@
             android:text="计算" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView_jiangong4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -108,12 +96,11 @@
             android:text="无" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/textView_jiangong5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="#FF0000"
-            android:text="备注：医疗费用补偿免赔额100，赔付比例90%" />
-
+            android:text="备注：医疗费用补偿免赔额100，赔付比例80%" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

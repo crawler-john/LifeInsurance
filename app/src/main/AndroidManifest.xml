@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +18,10 @@
         </activity>
         <activity android:name=".Explain" />
         <activity android:name=".Explain2" />
-        <activity android:name=".explain3"></activity>
+        <activity android:name=".explain3" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Jiangongxian" />
+        <activity android:name=".Zhidingchangsuoxian"></activity>
     </application>
 
 </manifest>
